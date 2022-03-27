@@ -1,0 +1,113 @@
+﻿@model DashboardVM
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-6 grid-margin stretch-card">
+            <div class="card">
+
+                <div class="card-body pt-5 text-center">
+                    <i class="far fa-star fa-2x"></i>
+                    <h4><a asp-controller="Rating">@Model.RatingCount Ratings</a></h4>
+                </div>
+
+
+            </div>
+
+
+
+
+        </div>
+
+
+
+
+
+
+        <div class="col-lg-3 col-6 grid-margin stretch-card">
+            <div class="card">
+
+                <div class="card-body pt-5 text-center">
+                    <i style="font-size: 2em;" class="fa-solid fa-bag-shopping"></i>
+                    <h4><a asp-controller="Service">@Model.ServiceCount Service</a></h4>
+                </div>
+
+
+            </div>
+
+
+
+
+        </div>
+
+
+
+
+
+        <div class="col-lg-3 col-6 grid-margin stretch-card">
+            <div class="card ">
+
+                <div class="card-body pt-5 text-center">
+                    <i style="font-size: 2em;" class="fa-solid fa-envelope @(ViewBag.Sayi == 1 ? "card-active": null)"></i>
+                    <h4><a asp-controller="Reguest">@Model.MailCount Mail's</a></h4>
+                </div>
+
+
+            </div>
+
+
+
+
+        </div>
+
+
+
+
+        <div class="col-lg-3 col-6 grid-margin stretch-card">
+            <div class="card">
+
+                <div class="card-body pt-5 text-center">
+                    <i style="font-size: 2em;" class="fa-solid fa-user-doctor"></i>
+                   
+                    <h4><a asp-controller="Team">@Model.TeamCount Team Members</a></h4>
+                </div>
+
+
+            </div>
+
+
+
+
+        </div>
+
+
+
+        
+        <div class="col-lg-3 col-6 grid-margin stretch-card">
+            <div class="card">
+
+                <div class="card-body pt-5 text-center">
+                    <i style="font-size: 2em;" class="fa-solid fa-file-lines"></i>
+                
+                   
+                    <h4><a asp-controller="News">@Model.NewsCount News</a></h4>
+                </div>
+
+
+            </div>
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+        <div>
+        </div>

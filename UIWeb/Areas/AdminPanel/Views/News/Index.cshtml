@@ -1,0 +1,96 @@
+﻿@model IEnumerable<Entitites.News>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a class = "btn btn-success form-control" asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               ID
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhotoUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+          
+            <th>
+                @Html.DisplayNameFor(model => model.AuthorName)
+            </th>
+          
+            
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var count = 0;
+        }
+@foreach (var item in Model) {
+            count++;
+            <tr>
+             <td>
+                @count
+            </td>
+            <td>
+               <img width = "100" src = "@item.PhotoUrl"/>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+               @item.Description.Substring(0,50)...
+            </td>
+          
+            <td>
+                @Html.DisplayFor(modelItem => item.AuthorName)
+            </td>
+           
+          
+          
+                <td class="d-flex align-items-center">
+                    <a class="btn btn-warning me-2" asp-action="Edit" asp-route-id="@item.Id"><i class="fa-solid fa-pen"></i></a> &nbsp; &nbsp;
+                    @*<a asp-action = "Delete" asp-route-id ="@item.Id">Delete</a>*@
+                    <form id="courseRemove" method="post" asp-action="Delete">
+                        <input type="hidden" value=@item.Id name="Id" />
+                        <button class="btn btn-danger btn-delete"><i class="fa-solid fa-trash-can"></i></button>
+                    </form> &nbsp; &nbsp;
+
+                  
+                </td>
+           
+       
+        </tr>
+}
+    </tbody>
+</table>
+
+
+@section MyScripts{
+
+<script>
+    $(".btn-delete").on("click", function(e){
+        e.preventDefault()
+        var yesNo = confirm("Are you sure you want to delete this item?")
+        if(yesNo){
+            $(this).parents("#courseRemove").submit();
+        }
+    })
+
+
+</script>
+
+}
+

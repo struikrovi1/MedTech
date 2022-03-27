@@ -1,0 +1,67 @@
+﻿@model Entitites.Service
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Service</h4>
+<hr />
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IconUrl" class="control-label"></label>
+                <input id = "iconInput" type = "hidden" asp-for="IconUrl" class="form-control" />
+                <span asp-validation-for="IconUrl" class="text-danger"></span>
+
+
+                <div class="iconList">
+                    <i class="fa-solid fa-capsules"></i>
+                    <i class="fa-solid fa-prescription-bottle-medical"></i>
+                    <i class="fa-solid fa-tablets"></i>
+                    <i class="fa-solid fa-house-chimney-medical"></i>
+                    <i class="fa-solid fa-syringe"></i>
+                    <i class="fa-solid fa-stethoscope"></i>
+                    <i class="fa-solid fa-hospital"></i>
+                    <i class="fa-solid fa-truck-medical"></i>
+                    <i class="fas fa-blind"></i>
+                    <i class="fa-solid fa-lungs-virus"></i>
+                    <i class="fa-solid fa-hand-holding-medical"></i>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="ServiceName" class="control-label"></label>
+                <input asp-for="ServiceName" class="form-control" />
+                <span asp-validation-for="ServiceName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ServDescription" class="control-label"></label>
+                <input asp-for="ServDescription" class="form-control" />
+                <span asp-validation-for="ServDescription" class="text-danger"></span>
+            </div>
+     
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section MyScripts{
+<script>
+    $(".iconList i").on("click", function(){
+         $(".iconList i").removeClass("icon-active")
+        $(this).toggleClass("icon-active")
+        const value = $(this).attr("class")
+        $("#iconInput").val(value)
+    })
+
+</script>
+}

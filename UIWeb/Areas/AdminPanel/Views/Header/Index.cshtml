@@ -1,0 +1,100 @@
+﻿@model IEnumerable<Entitites.Header>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Header Index Page</h1>
+
+<p>
+    <a id="@(ViewBag.Sayi == 1 ? "myBtn": null)" class="btn btn-success form-control" asp-action="Create">Create New Header Tablo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PhotoUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MainTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SubHeader)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img width="100" src="@item.PhotoUrl" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MainTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubHeader)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+
+
+                <td class="d-flex align-items-center">
+                    <a class="btn btn-warning me-2" asp-action="Edit" asp-route-id="@item.Id"><i class="fa-solid fa-pen"></i></a> &nbsp; &nbsp;
+                    @*<a asp-action = "Delete" asp-route-id ="@item.Id">Delete</a>*@
+                    <form id="courseRemove" method="post" asp-action="Delete">
+                        <input type="hidden" value=@item.Id name="Id" />
+                        <button class="btn btn-danger btn-delete"><i class="fa-solid fa-trash-can"></i></button>
+                    </form> &nbsp; &nbsp;
+
+                    <a class="btn btn-info" href="/AdminPanel/Header/Details/@item.Id">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section MyScripts{
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    $(".btn-delete").on("click", function(e){
+        e.preventDefault()
+        var yesNo = confirm("Are you sure you want to delete this item?")
+        if(yesNo){
+            $(this).parents("#courseRemove").submit();
+        }
+    })
+
+    var button = document.getElementById("myBtn")
+                button.addEventListener(("click"), function(e){
+                    e.preventDefault()
+                    e.stopPropagation()
+                    Swal.fire(
+      'Warning',
+      'You can create only one item',
+      'warning'
+    )
+
+
+
+                })
+</script>
+
+
+
+
+
+
+
+
+
+     }
+
+

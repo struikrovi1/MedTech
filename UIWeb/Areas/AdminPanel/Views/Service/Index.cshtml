@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Entitites.Service>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a style = "color: white;" class = "btn btn-success form-control"  asp-action="Create">Create New Service</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+               <th>
+                Id
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IconUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ServiceName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ServDescription)
+            </th>
+         
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+         @{
+            var count = 0;
+        }
+@foreach (var item in Model) {
+    count++;
+        <tr>
+               <td>
+               @count
+            </td>
+            <td>
+                <i class = "@Html.DisplayFor(modelItem => item.IconUrl)"></i>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServDescription)
+            </td>
+         
+       <td class="d-flex align-items-center">
+                    <a class="btn btn-warning me-2" asp-action="Edit" asp-route-id="@item.Id"><i class="fa-solid fa-pen"></i></a> &nbsp; &nbsp;
+                    <a class="btn btn-danger me-2" asp-action = "Delete" asp-route-id ="@item.Id"><i class="fa-solid fa-trash-can"></i></a> &nbsp; &nbsp;
+                  @*  <form id="courseRemove" method="post" asp-action="Delete">
+                        <input type="hidden" value=@item.Id name="Id" />
+                        <button class="btn btn-danger btn-delete">Delete</button>
+                    </form>*@
+                    <a class ="btn btn-info" href="/AdminPanel/Service/Details/@item.Id">Details</a>
+                </td> 
+        </tr>
+}
+    </tbody>
+</table>

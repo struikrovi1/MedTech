@@ -1,0 +1,89 @@
+﻿@model Entitites.Gear
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Gear</h4>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="PhotoUrl" class="control-label"></label>
+                <input asp-for="PhotoUrl" class="form-control" />
+                <span asp-validation-for="PhotoUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Discount" class="control-label"></label>
+                <input asp-for="Discount" class="form-control" />
+                <span asp-validation-for="Discount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TitleOne" class="control-label"></label>
+
+                <span asp-validation-for="TitleOne" class="text-danger"></span>
+                <textarea  asp-for = "TitleOne" class="form-control" id="editor1"> </textarea>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Color" class="control-label"></label>
+                <input type="hidden" id="colorInput" asp-for="Color" class="form-control" />
+                <span asp-validation-for="Color" class="text-danger"></span>
+
+                <div class="colorList d-flex align-items-center">
+                    <div class="box" id="tomato"></div>
+                    <div class="box" id="royalblue"></div>
+                    <div class="box" id="forestgreen"></div>
+                    <div class="box" id="aqua"></div>
+                    <div class="box" id="firebrick"></div>
+                    <div class="box" id="blueviolet"></div>
+                    <div class="box" id="rosybrown"></div>
+                    <div class="box" id="mediumturquoise"></div>
+                    <div class="box" id="white"></div>
+                    <div class="box" id="coral"></div>
+                    <div class="box" id="beige"></div>
+
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+@*
+    @section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }*@
+
+
+    
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor1' ) )
+          
+
+</script>
+
+
+@section MyScripts{
+<script>
+    $(".colorList .box").on("click", function(){
+         $(".colorList .box").removeClass("box-active")
+        $(this).toggleClass("box-active")
+        const value = $(this).attr("id")
+        $("#colorInput").val(value)
+    })
+
+</script>
+}

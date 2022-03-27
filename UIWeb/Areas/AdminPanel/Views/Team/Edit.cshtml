@@ -1,0 +1,86 @@
+﻿@model Entitites.Team
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Team</h4>
+<hr />
+
+
+    <form asp-action="Edit" enctype="multipart/form-data">
+        <div class="row align-items-center">
+        <div class="col-md-8">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Position" class="control-label"></label>
+                <input asp-for="Position" class="form-control" />
+                <span asp-validation-for="Position" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Article" class="control-label"></label>
+                <textarea asp-for="Article" class="form-control" id="editor1"> </textarea>
+                <span asp-validation-for="Article" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+
+        </div>
+
+         <div class="col-md-4">
+                 <div class="form-group">
+                <label asp-for="PhotoUrl" class="control-label"></label>
+
+                <input type="hidden" name="OldPhoto" value="@Model.PhotoUrl" />
+                <img width="300" src="@Model.PhotoUrl" />
+                <input type="file" asp-for="PhotoUrl" class="form-control" name="Image" />
+                <span asp-validation-for="PhotoUrl" class="text-danger"></span>
+            </div>
+             </div>
+
+        </div>
+    </form>
+
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor1' ) )
+
+
+</script>

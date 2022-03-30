@@ -9904,6 +9904,7 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "DataAccess >= 1.0.0",
+      "Entitites >= 1.0.0",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 6.0.2",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 6.0.2",
       "Microsoft.AspNetCore.Identity.UI >= 6.0.2",
@@ -9942,6 +9943,9 @@
           "projectReferences": {
             "C:\\Users\\user\\Desktop\\Projects\\Practice\\MedTech\\DataAccess\\DataAccess.csproj": {
               "projectPath": "C:\\Users\\user\\Desktop\\Projects\\Practice\\MedTech\\DataAccess\\DataAccess.csproj"
+            },
+            "C:\\Users\\user\\Desktop\\Projects\\Practice\\MedTech\\Entitites\\Entitites.csproj": {
+              "projectPath": "C:\\Users\\user\\Desktop\\Projects\\Practice\\MedTech\\Entitites\\Entitites.csproj"
             },
             "C:\\Users\\user\\Desktop\\Projects\\Practice\\MedTech\\Services\\Services.csproj": {
               "projectPath": "C:\\Users\\user\\Desktop\\Projects\\Practice\\MedTech\\Services\\Services.csproj"

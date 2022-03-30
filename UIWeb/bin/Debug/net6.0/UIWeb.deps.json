@@ -9,6 +9,7 @@
       "UIWeb/1.0.0": {
         "dependencies": {
           "DataAccess": "1.0.0",
+          "Entitites": "1.0.0",
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "6.0.2",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.2",
           "Microsoft.AspNetCore.Identity.UI": "6.0.2",

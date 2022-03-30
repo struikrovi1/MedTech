@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using DataAccess;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Services;
+
 using UIWeb.ViewModels;
 
 namespace UIWeb.Controllers
@@ -10,26 +13,40 @@ namespace UIWeb.Controllers
 
         private readonly BlogService _blogservice;
         private readonly TagService _tagService;
+        private readonly MedDBContext _context;
 
 
-        public BlogController(BlogService blogservice, TagService tagService)
+        public BlogController(BlogService blogservice, TagService tagService, MedDBContext context)
         {
             _blogservice = blogservice;
             _tagService = tagService;
+            _context = context;
         }
 
         // GET: BlogController
-        public ActionResult Index()
+        public ActionResult Index(int? id, string searchText)
         {
-            
+
+            var blogs = _context.Blogs.Include(x => x.Tag).AsQueryable();
+
+            if (id != null)
+            {
+                blogs = blogs.Where(x => x.TagId == id);
+            }
+            if (!string.IsNullOrWhiteSpace(searchText))
+            {
+                blogs = blogs.Where(c => c.Title.Contains(searchText));
+            }
 
             BlogVM bvm = new()
             {
-                Blogs = _blogservice.GetAll(),
+                Blogs = blogs.ToList(),
                Tag = _tagService.GetAll(),
             };
             return View(bvm);
         }
+
+
 
         // GET: BlogController/Details/5
         public ActionResult Details(int? id)

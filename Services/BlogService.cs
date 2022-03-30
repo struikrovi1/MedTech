@@ -1,5 +1,6 @@
 ﻿using DataAccess;
 using Entitites;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +34,7 @@ namespace Services
         }
         public List<Blog> GetAll()
         {
-            return _context.Blogs.ToList();
+            return _context.Blogs. Include(x=>x.Tag).ToList();
         }
         public Blog GetById(int? id)
         {

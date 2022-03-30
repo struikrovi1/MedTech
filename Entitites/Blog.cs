@@ -24,7 +24,7 @@ namespace Entitites
 
         public int TagId { get; set; }
 
-        public virtual Tags Tag { get; set; }
+        public Tags Tag { get; set; }
 
 
     }

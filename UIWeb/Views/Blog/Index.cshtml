@@ -34,9 +34,9 @@
 
                  <div class = "col-xl-7">
                        <div class="widget widget-newsletter" style = "margin-bottom: 40px;">
-                        <form id="widget-search-form-sidebar" class="form-inline">
+                        <form action = "/blog/index" id="widget-search-form-sidebar" class="form-inline">
                            <div class="input-group" style ="min-width: 100%;">
-                              <input type="text" aria-required="true" name="q" class="form-control widget-search-form" placeholder="Search...">
+                              <input type="text" aria-required="true" name="searchText" class="form-control widget-search-form" placeholder="Search...">
                               <div class="input-group-append">
                                  <span class="input-group-btn">
                                  <button type="submit" id="widget-widget-search-form-button" class="btn"><i class="fa fa-search"></i></button>
@@ -65,7 +65,7 @@
                                  <img alt="" src="@item.PhotoUrl">
                                  </a>
                                  <span class="post-meta-category">
-                                 <a href=""></a>
+                                 <a href="">@item.Tag.TagName</a>
                                  </span>
                                  <!--post-image-->
                               </div>
